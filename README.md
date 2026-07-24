@@ -1,16 +1,21 @@
 # STOPAZ
 
-v22 award-style museum rebuild.
+v24 forced slow sequence.
 
-Upload `index.html` and `README.md` directly into the root of a new blank GitHub repository.
+Upload `index.html` and `README.md` directly into the root of the GitHub repository.
 
 GitHub Pages:
 Settings → Pages → Deploy from branch → main → /root → Save.
 
-v22 changes:
-- Fixes chapter overlay transparency so homepage text does not show through.
-- Keeps the stronger museum-grade opening from v21.
-- Keeps separated era boxes, hover descriptions, metal orb cursor, embedded music, embedded images, and three clickable chapter pages.
+Opening behavior:
+- Site arrives on a dark gallery field.
+- One central box forms first.
+- `Jew-Hatred` appears inside it.
+- The lower boxes are locked and cannot start immediately.
+- After about 7.6 seconds, the three era boxes begin.
+- They emerge one by one, left to right: Antijudaism, Antisemitism, Antizionism.
+- Each has outline, surface, text, and small conceptual label.
+- Clicking an era opens its chapter page.
 
 Note:
 Browsers may block audible autoplay until first movement, click, tap, or keypress. This build starts muted autoplay immediately and unmutes on first interaction.
