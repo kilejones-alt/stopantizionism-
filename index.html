@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stop Antizionism</title>
-<!-- v41: mobile performance + gallery transition polish -->
+<!-- v44: kinetic triptych not boring -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ button {
   place-items: center;
   opacity: 0;
   transform: translateY(14px);
-  animation: primaryArrive 8000ms linear both;
+  animation: primaryArrive 4000ms linear both;
   box-shadow: 0 18px 52px rgba(20,24,28,.055);
 }
 
@@ -88,7 +88,7 @@ button {
   inset: -1px;
   border: 1px solid var(--line-strong);
   clip-path: inset(0 100% 0 0);
-  animation: frameDraw 8000ms linear both;
+  animation: frameDraw 4000ms linear both;
   pointer-events: none;
 }
 
@@ -107,7 +107,7 @@ button {
   line-height: .86;
   opacity: 0;
   filter: blur(8px);
-  animation: textArrive 8000ms linear both;
+  animation: textArrive 4000ms linear both;
 }
 
 .era-row {
@@ -130,13 +130,13 @@ button {
     border-color 420ms var(--ease),
     box-shadow 420ms var(--ease),
     transform 420ms var(--ease);
-  animation: eraArrive 5000ms linear both;
+  animation: eraArrive 2500ms linear both;
   animation-delay: var(--delay);
 }
 
-.era-card:nth-child(1) { --delay: 8000ms; }
-.era-card:nth-child(2) { --delay: 13000ms; }
-.era-card:nth-child(3) { --delay: 18000ms; }
+.era-card:nth-child(1) { --delay: 4000ms; }
+.era-card:nth-child(2) { --delay: 6500ms; }
+.era-card:nth-child(3) { --delay: 9000ms; }
 
 .era-card span {
   display: block;
@@ -785,7 +785,7 @@ button {
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
   opacity: 0;
-  animation: lowerRuleIn 1700ms var(--ease) 18700ms both;
+  animation: lowerRuleIn 1200ms var(--ease) 11000ms both;
 }
 
 .era-card::after {
@@ -1008,6 +1008,556 @@ button {
   }
 }
 
+
+/* v43: kinetic gallery wall. Bigger images, less blankness, more motion. */
+.chapter {
+  background:
+    radial-gradient(circle at 20% 8%, rgba(255,255,255,.92), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(205,199,181,.26), transparent 34rem),
+    linear-gradient(180deg, #f6f4ef 0%, #ede8dc 100%);
+}
+
+.room {
+  width: min(1320px, 94vw);
+  padding-top: clamp(38px, 5.2vh, 58px);
+  padding-bottom: clamp(34px, 5vh, 54px);
+}
+
+.room-top {
+  position: relative;
+  z-index: 8;
+}
+
+.room-title {
+  font-size: clamp(3.6rem, 7.6vw, 8.8rem);
+  line-height: .76;
+  letter-spacing: -.025em;
+}
+
+.gallery-rail {
+  margin-top: clamp(24px, 3.8vh, 42px);
+  opacity: .8;
+}
+
+.gallery-grid {
+  position: relative;
+  min-height: min(66vh, 560px);
+  margin-top: clamp(18px, 3vh, 34px);
+  display: grid;
+  grid-template-columns: 1.06fr 1.18fr 1.06fr;
+  gap: clamp(18px, 2.3vw, 36px);
+  align-items: stretch;
+  perspective: 1400px;
+}
+
+.gallery-card {
+  min-height: min(66vh, 560px);
+  height: min(66vh, 560px);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: stretch;
+  transform-style: preserve-3d;
+}
+
+.gallery-frame {
+  height: 100%;
+  min-height: 0;
+  padding: clamp(10px, 1.4vw, 20px);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(252,250,245,.98));
+  border: 1px solid rgba(16,19,22,.22);
+  box-shadow:
+    0 28px 72px rgba(20,24,28,.12),
+    inset 0 0 0 8px rgba(255,255,255,.88);
+}
+
+.gallery-card:nth-child(1) {
+  margin-top: clamp(28px, 5vh, 54px);
+}
+
+.gallery-card:nth-child(2) {
+  margin-top: 0;
+}
+
+.gallery-card:nth-child(3) {
+  margin-top: clamp(48px, 8vh, 84px);
+}
+
+.gallery-card strong {
+  margin-top: 18px;
+  font-size: clamp(2.2rem, 3.8vw, 4.4rem);
+  letter-spacing: -.018em;
+}
+
+.chapter.open .gallery-card:nth-child(1) {
+  animation: kineticInLeft 1050ms var(--ease) 180ms both;
+}
+
+.chapter.open .gallery-card:nth-child(2) {
+  animation: kineticInCenter 1150ms var(--ease) 330ms both;
+}
+
+.chapter.open .gallery-card:nth-child(3) {
+  animation: kineticInRight 1050ms var(--ease) 480ms both;
+}
+
+.chapter.open .gallery-frame {
+  animation: slowWallBreath 7s ease-in-out infinite alternate;
+}
+
+.chapter.open .gallery-card:nth-child(2) .gallery-frame {
+  animation-delay: 500ms;
+}
+
+.chapter.open .gallery-card:nth-child(3) .gallery-frame {
+  animation-delay: 900ms;
+}
+
+.gallery-grid:hover .gallery-card,
+.gallery-grid:focus-within .gallery-card {
+  opacity: .34;
+  filter: saturate(.82);
+}
+
+.gallery-grid:hover .gallery-card:hover,
+.gallery-grid:focus-within .gallery-card:focus-visible,
+.gallery-card.is-hover {
+  opacity: 1;
+  filter: saturate(1);
+  z-index: 20;
+}
+
+.gallery-grid:hover .gallery-card:hover .gallery-frame,
+.gallery-grid:focus-within .gallery-card:focus-visible .gallery-frame,
+.gallery-card.is-hover .gallery-frame {
+  transform:
+    translate3d(calc(var(--card-x, 0) * 18px), calc(var(--card-y, 0) * 18px - 22px), 90px)
+    scale(1.28);
+  border-color: rgba(16,19,22,.55);
+  box-shadow:
+    0 48px 120px rgba(20,24,28,.26),
+    inset 0 0 0 8px rgba(255,255,255,.96);
+}
+
+.gallery-grid:hover .gallery-card:hover img,
+.gallery-grid:focus-within .gallery-card:focus-visible img,
+.gallery-card.is-hover img {
+  transform:
+    translate3d(calc(var(--card-x, 0) * 22px), calc(var(--card-y, 0) * 22px), 0)
+    scale(1.055);
+}
+
+.gallery-card:first-child .gallery-frame {
+  transform-origin: center left;
+}
+
+.gallery-card:last-child .gallery-frame {
+  transform-origin: center right;
+}
+
+.chapter.open .room::before {
+  left: -18px;
+  background: rgba(16,19,22,.20);
+}
+
+.chapter.open .room::after {
+  left: -18px;
+}
+
+.page-wipe.active {
+  animation: kineticWipe 720ms var(--ease) both;
+}
+
+@keyframes kineticInLeft {
+  0% { opacity: 0; transform: translate3d(-120px, 48px, -120px) rotateY(10deg) scale(.92); filter: blur(14px); }
+  60% { opacity: .86; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) rotateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes kineticInCenter {
+  0% { opacity: 0; transform: translate3d(0, 70px, -160px) scale(.86); filter: blur(16px); }
+  62% { opacity: .88; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+}
+
+@keyframes kineticInRight {
+  0% { opacity: 0; transform: translate3d(120px, 48px, -120px) rotateY(-10deg) scale(.92); filter: blur(14px); }
+  60% { opacity: .86; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) rotateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes slowWallBreath {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+@keyframes kineticWipe {
+  0% { opacity: 0; transform: translateX(-46%) skewX(-8deg); }
+  32% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(46%) skewX(-8deg); }
+}
+
+/* Mobile v43: kinetic but readable. */
+@media (max-width: 900px) {
+  .chapter {
+    background: linear-gradient(180deg, #f6f4ef 0%, #eee9de 100%);
+  }
+
+  .room {
+    width: min(100% - 24px, 620px);
+    padding-top: 28px;
+  }
+
+  .room-title {
+    font-size: clamp(3.4rem, 17vw, 5.8rem);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .gallery-card,
+  .gallery-card:nth-child(1),
+  .gallery-card:nth-child(2),
+  .gallery-card:nth-child(3) {
+    height: min(74vh, 560px);
+    min-height: 420px;
+    margin-top: 0;
+  }
+
+  .gallery-frame {
+    height: 100%;
+    padding: 14px;
+  }
+
+  .gallery-card strong {
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+    margin-top: 12px;
+  }
+
+  .chapter.open .gallery-frame {
+    animation: none;
+  }
+
+  .gallery-grid:hover .gallery-card,
+  .gallery-grid:focus-within .gallery-card {
+    opacity: 1;
+    filter: none;
+  }
+
+  .gallery-grid:hover .gallery-card:hover .gallery-frame,
+  .gallery-grid:focus-within .gallery-card:focus-visible .gallery-frame,
+  .gallery-card.is-hover .gallery-frame {
+    transform: translateY(-6px) scale(1.035);
+  }
+
+  .gallery-grid:hover .gallery-card:hover img,
+  .gallery-grid:focus-within .gallery-card:focus-visible img,
+  .gallery-card.is-hover img {
+    transform: none;
+  }
+}
+
+
+/* v44: kinetic triptych. Big, directional, image-led. */
+.triptych-chapter {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,.92), transparent 26rem),
+    radial-gradient(circle at 74% 18%, rgba(156,37,28,.12), transparent 32rem),
+    radial-gradient(circle at 52% 86%, rgba(16,19,22,.13), transparent 34rem),
+    linear-gradient(135deg, #f7f3ea 0%, #e9e1d2 48%, #f8f5ef 100%);
+}
+
+.triptych-chapter::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    linear-gradient(115deg, transparent 0 14%, rgba(16,19,22,.08) 14.1% 14.22%, transparent 14.35% 100%),
+    linear-gradient(115deg, transparent 0 48%, rgba(16,19,22,.08) 48.1% 48.22%, transparent 48.35% 100%),
+    linear-gradient(115deg, transparent 0 79%, rgba(16,19,22,.07) 79.1% 79.22%, transparent 79.35% 100%);
+  animation: diagonalPressure 12s ease-in-out infinite alternate;
+}
+
+.triptych-room {
+  width: min(1390px, 96vw);
+  padding-top: clamp(28px, 4vh, 48px);
+  padding-bottom: clamp(28px, 4vh, 48px);
+}
+
+.triptych-room .room-top {
+  position: relative;
+  z-index: 30;
+}
+
+.triptych-room .room-title {
+  font-size: clamp(4.8rem, 9.4vw, 11rem);
+  letter-spacing: -.045em;
+  line-height: .68;
+  mix-blend-mode: multiply;
+  transform-origin: left top;
+}
+
+.triptych-room .back {
+  background: rgba(255,255,255,.76);
+  backdrop-filter: blur(8px);
+}
+
+.triptych-room .gallery-rail {
+  display: none;
+}
+
+.triptych-room .gallery-grid {
+  width: 100%;
+  min-height: min(69vh, 610px);
+  margin-top: clamp(14px, 2vh, 24px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: minmax(440px, min(66vh, 610px));
+  gap: 0;
+  align-items: stretch;
+  perspective: 1800px;
+}
+
+.triptych-room .gallery-card {
+  height: auto;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  opacity: 0;
+  transform-style: preserve-3d;
+}
+
+.triptych-room .gallery-card:nth-child(1) {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+  align-self: end;
+  height: 86%;
+  margin-top: 0;
+  z-index: 2;
+}
+
+.triptych-room .gallery-card:nth-child(2) {
+  grid-column: 4 / span 6;
+  grid-row: 1;
+  height: 100%;
+  z-index: 5;
+}
+
+.triptych-room .gallery-card:nth-child(3) {
+  grid-column: 8 / span 5;
+  grid-row: 1;
+  align-self: start;
+  height: 90%;
+  margin-top: 0;
+  z-index: 3;
+}
+
+.triptych-room .gallery-frame {
+  height: 100%;
+  min-height: 0;
+  padding: clamp(10px, 1vw, 16px);
+  background: #fff;
+  border: 1px solid rgba(16,19,22,.34);
+  box-shadow:
+    0 36px 110px rgba(20,24,28,.22),
+    inset 0 0 0 7px rgba(255,255,255,.95);
+  overflow: hidden;
+}
+
+.triptych-room .gallery-frame img {
+  object-fit: contain;
+  transform: scale(1.025);
+  filter: contrast(1.035) saturate(1.035);
+}
+
+.triptych-room .gallery-card strong {
+  position: relative;
+  z-index: 10;
+  margin-top: 12px;
+  font-size: clamp(2.8rem, 4.4vw, 5.2rem);
+  line-height: .78;
+  letter-spacing: -.035em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+
+.triptych-chapter.open .gallery-card:nth-child(1) {
+  animation: triptychLeft 1000ms var(--ease) 160ms both;
+}
+
+.triptych-chapter.open .gallery-card:nth-child(2) {
+  animation: triptychCenter 1150ms var(--ease) 340ms both;
+}
+
+.triptych-chapter.open .gallery-card:nth-child(3) {
+  animation: triptychRight 1000ms var(--ease) 520ms both;
+}
+
+.triptych-chapter.open .room-title {
+  animation: titleStrike 780ms var(--ease) both;
+}
+
+.triptych-chapter.open .gallery-card:nth-child(1) .gallery-frame {
+  transform: rotateZ(-2.6deg);
+}
+
+.triptych-chapter.open .gallery-card:nth-child(2) .gallery-frame {
+  transform: translateY(-18px) rotateZ(.6deg);
+}
+
+.triptych-chapter.open .gallery-card:nth-child(3) .gallery-frame {
+  transform: rotateZ(2.4deg);
+}
+
+.triptych-room .gallery-grid:hover .gallery-card,
+.triptych-room .gallery-grid:focus-within .gallery-card {
+  opacity: .28 !important;
+  filter: grayscale(.18) blur(.6px);
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:hover,
+.triptych-room .gallery-grid:focus-within .gallery-card:focus-visible,
+.triptych-room .gallery-card.is-hover {
+  opacity: 1 !important;
+  filter: none;
+  z-index: 50;
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:nth-child(1):not(:hover) {
+  transform: translateX(-34px) scale(.96) !important;
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:nth-child(2):not(:hover) {
+  transform: translateY(22px) scale(.94) !important;
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:nth-child(3):not(:hover) {
+  transform: translateX(34px) scale(.96) !important;
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:hover .gallery-frame,
+.triptych-room .gallery-grid:focus-within .gallery-card:focus-visible .gallery-frame,
+.triptych-room .gallery-card.is-hover .gallery-frame {
+  transform:
+    translate3d(calc(var(--card-x, 0) * 20px), calc(var(--card-y, 0) * 20px - 26px), 140px)
+    rotateZ(0deg)
+    scale(1.34);
+  border-color: rgba(16,19,22,.66);
+  box-shadow:
+    0 52px 140px rgba(20,24,28,.34),
+    0 0 0 1px rgba(255,255,255,.76),
+    inset 0 0 0 7px rgba(255,255,255,1);
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:hover img,
+.triptych-room .gallery-grid:focus-within .gallery-card:focus-visible img,
+.triptych-room .gallery-card.is-hover img {
+  transform:
+    translate3d(calc(var(--card-x, 0) * 28px), calc(var(--card-y, 0) * 28px), 0)
+    scale(1.085);
+}
+
+.triptych-room .gallery-grid:hover .gallery-card:hover strong,
+.triptych-room .gallery-grid:focus-within .gallery-card:focus-visible strong,
+.triptych-room .gallery-card.is-hover strong {
+  transform: translateY(26px) scale(1.08);
+}
+
+.triptych-room .gallery-card:first-child .gallery-frame {
+  transform-origin: center left;
+}
+
+.triptych-room .gallery-card:last-child .gallery-frame {
+  transform-origin: center right;
+}
+
+@keyframes diagonalPressure {
+  0% { transform: translateX(-1.5%) translateY(-.8%); opacity: .32; }
+  100% { transform: translateX(1.5%) translateY(.8%); opacity: .52; }
+}
+
+@keyframes titleStrike {
+  0% { opacity: 0; transform: translateX(-34px) scaleX(.95); filter: blur(8px); }
+  100% { opacity: 1; transform: translateX(0) scaleX(1); filter: blur(0); }
+}
+
+@keyframes triptychLeft {
+  0% { opacity: 0; transform: translate3d(-210px, 90px, -220px) rotateY(18deg) rotateZ(-8deg) scale(.78); filter: blur(18px); }
+  62% { opacity: .92; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) rotateY(0) rotateZ(0) scale(1); filter: blur(0); }
+}
+
+@keyframes triptychCenter {
+  0% { opacity: 0; transform: translate3d(0, 120px, -280px) scale(.72); filter: blur(20px); }
+  64% { opacity: .94; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+}
+
+@keyframes triptychRight {
+  0% { opacity: 0; transform: translate3d(210px, 90px, -220px) rotateY(-18deg) rotateZ(8deg) scale(.78); filter: blur(18px); }
+  62% { opacity: .92; filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) rotateY(0) rotateZ(0) scale(1); filter: blur(0); }
+}
+
+@media (max-width: 900px) {
+  .triptych-room {
+    width: min(100% - 22px, 620px);
+  }
+
+  .triptych-room .room-title {
+    font-size: clamp(4rem, 18vw, 6.5rem);
+  }
+
+  .triptych-room .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+    gap: 30px;
+    margin-top: 26px;
+  }
+
+  .triptych-room .gallery-card:nth-child(1),
+  .triptych-room .gallery-card:nth-child(2),
+  .triptych-room .gallery-card:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+    height: min(76vh, 580px);
+    min-height: 440px;
+    align-self: stretch;
+  }
+
+  .triptych-chapter.open .gallery-card:nth-child(1) .gallery-frame,
+  .triptych-chapter.open .gallery-card:nth-child(2) .gallery-frame,
+  .triptych-chapter.open .gallery-card:nth-child(3) .gallery-frame {
+    transform: none;
+  }
+
+  .triptych-room .gallery-grid:hover .gallery-card,
+  .triptych-room .gallery-grid:focus-within .gallery-card {
+    opacity: 1 !important;
+    filter: none;
+  }
+
+  .triptych-room .gallery-grid:hover .gallery-card:hover .gallery-frame,
+  .triptych-room .gallery-grid:focus-within .gallery-card:focus-visible .gallery-frame,
+  .triptych-room .gallery-card.is-hover .gallery-frame {
+    transform: translateY(-8px) scale(1.035);
+  }
+
+  .triptych-room .gallery-grid:hover .gallery-card:hover img,
+  .triptych-room .gallery-grid:focus-within .gallery-card:focus-visible img,
+  .triptych-room .gallery-card.is-hover img {
+    transform: none;
+  }
+}
+
 </style>
 </head>
 
@@ -1060,8 +1610,8 @@ button {
     </div>
   </section>
 
-  <section class="chapter" id="chapter-antizionism" aria-hidden="true">
-    <div class="room">
+  <section class="chapter triptych-chapter" id="chapter-antizionism" aria-hidden="true">
+    <div class="room triptych-room">
       <div class="room-top">
         <h1 class="room-title">Antizionism</h1>
         <button class="back" type="button" data-close aria-label="Back">×</button>

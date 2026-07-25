@@ -1,6 +1,6 @@
 # STOPAZ
 
-v41 mobile performance + gallery transition polish.
+v44 kinetic triptych not boring.
 
 Upload the full contents of this ZIP to the repository root:
 - index.html
@@ -8,14 +8,17 @@ Upload the full contents of this ZIP to the repository root:
 - assets folder
 
 Changes:
-- moved large embedded images out of the HTML into optimized WebP files
-- moved embedded music out of the HTML into assets/nocturne.mp3
-- much smaller/faster index.html
-- improved mobile layout
-- mobile uses tap-to-open detail view instead of relying on hover
-- gallery images stack cleanly on phones
-- detail view is mobile-safe
-- stronger homepage-to-gallery transition
-- no captions/subtitles added
-- no factual text added
-- hover zoom/parallax remains on desktop
+- Antizionism page is no longer a blank gallery.
+- Uses a kinetic triptych layout.
+- Images are larger and overlap.
+- Stronger page energy through diagonal movement and spatial depth.
+- Soviet / Arab / Western enter from different directions.
+- Hovered image expands aggressively.
+- Other images dim and move away on hover.
+- Cursor-responsive parallax retained.
+- Mobile remains vertical and tap-safe.
+- Faster v42 opening timing retained.
+- No new captions.
+- No factual text added.
+- No custom cursor.
+- No oil effect.
