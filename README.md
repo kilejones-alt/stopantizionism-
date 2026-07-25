@@ -1,21 +1,21 @@
 # STOPAZ
 
-v24 forced slow sequence.
+v41 mobile performance + gallery transition polish.
 
-Upload `index.html` and `README.md` directly into the root of the GitHub repository.
+Upload the full contents of this ZIP to the repository root:
+- index.html
+- README.md
+- assets folder
 
-GitHub Pages:
-Settings → Pages → Deploy from branch → main → /root → Save.
-
-Opening behavior:
-- Site arrives on a dark gallery field.
-- One central box forms first.
-- `Jew-Hatred` appears inside it.
-- The lower boxes are locked and cannot start immediately.
-- After about 7.6 seconds, the three era boxes begin.
-- They emerge one by one, left to right: Antijudaism, Antisemitism, Antizionism.
-- Each has outline, surface, text, and small conceptual label.
-- Clicking an era opens its chapter page.
-
-Note:
-Browsers may block audible autoplay until first movement, click, tap, or keypress. This build starts muted autoplay immediately and unmutes on first interaction.
+Changes:
+- moved large embedded images out of the HTML into optimized WebP files
+- moved embedded music out of the HTML into assets/nocturne.mp3
+- much smaller/faster index.html
+- improved mobile layout
+- mobile uses tap-to-open detail view instead of relying on hover
+- gallery images stack cleanly on phones
+- detail view is mobile-safe
+- stronger homepage-to-gallery transition
+- no captions/subtitles added
+- no factual text added
+- hover zoom/parallax remains on desktop
