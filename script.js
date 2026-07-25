@@ -6,6 +6,16 @@
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Image decode/loading transitions
+  document.querySelectorAll('img.site-image').forEach(img => {
+    const markLoaded = () => img.classList.remove('pending-image');
+    if (img.complete && img.naturalWidth) markLoaded();
+    else {
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', markLoaded, { once: true });
+    }
+  });
+
 
   const menuItems = () => links
     ? [...links.querySelectorAll('a[href]:not([hidden])')]
@@ -162,8 +172,10 @@
 
     const render = () => {
       if (!images.length) return;
+      image.classList.add('pending-image');
       image.src = images[index];
-      image.alt = `${label.textContent} exhibition image ${index + 1} of ${images.length}`;
+      image.alt = `${label.dataset.galleryLabel || label.textContent} exhibition image ${index + 1} of ${images.length}`;
+      label.textContent = `${label.dataset.galleryLabel || label.textContent} archive`;
       count.textContent = `${index + 1} / ${images.length}`;
       const single = images.length < 2;
       prev.hidden = single;
@@ -186,7 +198,8 @@
         .filter(Boolean);
       if (!images.length) return;
       index = 0;
-      label.textContent = bay.dataset.label || 'Exhibition';
+      label.dataset.galleryLabel = bay.dataset.label || 'Exhibition';
+      label.textContent = `${label.dataset.galleryLabel} archive`;
       detail.hidden = false;
       detail.setAttribute('aria-hidden', 'false');
       detail.classList.add('open');
@@ -309,44 +322,78 @@
   const audio = document.querySelector('#room-audio');
   const music = document.querySelector('.music-control');
   if (audio && music) {
+    const stateKey = 'stopaz-exhibition-music';
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(stateKey) || '{}'); } catch (_) {}
+    if (Number.isFinite(saved.time)) audio.currentTime = Math.max(0, saved.time);
+
+    const persist = playing => {
+      try { localStorage.setItem(stateKey, JSON.stringify({ playing, time: audio.currentTime || 0 })); } catch (_) {}
+    };
     const syncMusic = playing => {
       music.classList.toggle('playing', playing);
       music.setAttribute('aria-pressed', String(playing));
       music.setAttribute('aria-label', playing ? 'Pause exhibition music' : 'Play exhibition music');
+      persist(playing);
     };
-
     const play = async () => {
-      try {
-        await audio.play();
-        syncMusic(true);
-        return true;
-      } catch (_) {
-        syncMusic(false);
-        return false;
-      }
+      try { await audio.play(); syncMusic(true); return true; }
+      catch (_) { syncMusic(false); return false; }
     };
-
     music.addEventListener('click', async event => {
       event.stopPropagation();
-      if (audio.paused) await play();
-      else audio.pause();
+      if (audio.paused) await play(); else audio.pause();
     });
     audio.addEventListener('play', () => syncMusic(true));
     audio.addEventListener('pause', () => syncMusic(false));
+    audio.addEventListener('timeupdate', () => { if (!audio.paused) persist(true); });
+    window.addEventListener('pagehide', () => persist(!audio.paused));
 
     if (body.dataset.musicOnInteraction === 'true') {
       let started = false;
+      const shouldResume = saved.playing === true;
       const interactionTypes = ['pointerdown', 'touchstart', 'wheel', 'keydown'];
       const removeAttempts = () => interactionTypes.forEach(type => window.removeEventListener(type, attempt));
       const attempt = async event => {
         const target = event.target instanceof Element ? event.target : null;
         if (started || target?.closest('.music-control')) return;
+        if (!shouldResume && event.type === 'wheel') return;
         started = await play();
         if (started) removeAttempts();
       };
-      interactionTypes.forEach(type => {
-        window.addEventListener(type, attempt, { passive: type !== 'keydown' });
-      });
+      interactionTypes.forEach(type => window.addEventListener(type, attempt, { passive: type !== 'keydown' }));
     }
+  }
+})();
+
+
+// Exhibition entrance and page transition
+(() => {
+  const body = document.body;
+  const overlay = document.createElement('div');
+  overlay.className = 'exhibition-transition';
+  overlay.setAttribute('aria-hidden', 'true');
+  body.appendChild(overlay);
+
+  document.querySelectorAll('a[href="exhibition.html"], a[href$="/exhibition.html"]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
+      const destination = link.href;
+      if (!destination) return;
+      event.preventDefault();
+      body.classList.add('exhibition-departing');
+      window.setTimeout(() => { window.location.href = destination; }, 180);
+    });
+  });
+
+  const enter = document.querySelector('.ex-v3-enter[href="#eras"]');
+  if (enter) {
+    enter.addEventListener('click', event => {
+      const eras = document.getElementById('eras');
+      if (!eras) return;
+      event.preventDefault();
+      eras.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', '#eras');
+    });
   }
 })();
