@@ -8,14 +8,6 @@
 <title>The Exhibition — STOPAZ</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="STOPAZ"/>
-<meta property="og:title" content="The Exhibition — STOPAZ"/>
-<meta property="og:description" content="The Exhibition: Jew-Hatred through three eras."/>
-<meta property="og:image" content="campus_encampment.webp"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="The Exhibition — STOPAZ"/>
-<meta name="twitter:description" content="The Exhibition: Jew-Hatred through three eras."/>
 <link href="styles.css" rel="stylesheet"/>
 </head>
 <body class="exhibition-shell exhibition-museum-page" data-page="exhibition.html" data-music-on-interaction="true">
@@ -26,17 +18,15 @@
     <div aria-hidden="true" class="museum-backdrop museum-backdrop-right"></div>
     <div aria-hidden="true" class="museum-backdrop museum-backdrop-bottom"></div>
     <div aria-hidden="true" class="museum-speckle"></div>
-
     <div class="museum-frame">
-      <a class="museum-return" href="index.html">Back to institute</a>
+      <a class="museum-return" href="index.html">Back to main site</a>
       <div class="museum-title-card">
         <div class="museum-title-image"></div>
         <h1>Jew-Hatred</h1>
       </div>
-
       <div class="museum-card-grid" role="navigation" aria-label="Exhibition eras">
         <a class="museum-card" href="#antijudaism">
-          <img class="site-image pending-image" src="protocols.webp" alt="Antijudaism" loading="lazy" decoding="async"/>
+          <img class="site-image pending-image" src="soviet_horses.webp" alt="Antijudaism" loading="lazy" decoding="async"/>
           <span>Antijudaism</span>
         </a>
         <a class="museum-card" href="#antisemitism">
@@ -49,23 +39,18 @@
         </a>
       </div>
     </div>
-
-    <button class="music-control" type="button" aria-pressed="false" aria-label="Play exhibition music">
-      <span>Music</span>
-      <i aria-hidden="true"></i>
-    </button>
-    <audio id="room-audio" src="nocturne.mp3" loop preload="auto"></audio>
+    <button class="music-control" type="button" aria-pressed="false" aria-label="Play exhibition music"><span>Music</span><i aria-hidden="true"></i></button>
+    <audio id="room-audio" src="nocturne.mp3" loop preload="auto" autoplay></audio>
   </section>
-
   <section class="museum-era-panels" id="eras" aria-label="Three eras of Jew-Hatred">
     <article class="museum-era-panel" id="antijudaism">
       <div class="museum-era-number">I</div>
-      <img class="site-image pending-image" src="protocols.webp" alt="Antijudaism archive image" loading="lazy" decoding="async"/>
+      <img class="site-image pending-image" src="soviet_horses.webp" alt="Antijudaism archive image" loading="lazy" decoding="async"/>
       <h2>Antijudaism</h2>
     </article>
     <article class="museum-era-panel" id="antisemitism">
       <div class="museum-era-number">II</div>
-      <img class="site-image pending-image" src="soviet_horses.webp" alt="Antisemitism archive image" loading="lazy" decoding="async"/>
+      <img class="site-image pending-image" src="protocols.webp" alt="Antisemitism archive image" loading="lazy" decoding="async"/>
       <h2>Antisemitism</h2>
     </article>
     <article class="museum-era-panel museum-era-panel-live" id="antizionism">

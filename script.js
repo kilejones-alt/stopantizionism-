@@ -326,6 +326,7 @@
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem(stateKey) || '{}'); } catch (_) {}
     if (Number.isFinite(saved.time)) audio.currentTime = Math.max(0, saved.time);
+    audio.autoplay = true;
 
     const persist = playing => {
       try { localStorage.setItem(stateKey, JSON.stringify({ playing, time: audio.currentTime || 0 })); } catch (_) {}
@@ -355,12 +356,15 @@
       const interactionTypes = ['pointerdown', 'touchstart', 'wheel', 'keydown'];
       const removeAttempts = () => interactionTypes.forEach(type => window.removeEventListener(type, attempt));
       const attempt = async event => {
-        const target = event.target instanceof Element ? event.target : null;
+        const target = event && event.target instanceof Element ? event.target : null;
         if (started || target?.closest('.music-control')) return;
-        if (!shouldResume && event.type === 'wheel') return;
+        if (!shouldResume && event?.type === 'wheel') return;
         started = await play();
         if (started) removeAttempts();
       };
+      if (shouldResume) { window.setTimeout(() => { play(); }, 80); }
+      window.addEventListener('pageshow', () => { if (saved.playing === true) play(); });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && saved.playing === true) play(); });
       interactionTypes.forEach(type => window.addEventListener(type, attempt, { passive: type !== 'keydown' }));
     }
   }

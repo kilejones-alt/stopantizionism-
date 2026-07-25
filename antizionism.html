@@ -1,30 +1,57 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#090909" name="theme-color"/><meta content="The Antizionism room of The Exhibition." name="description"/><title>Antizionism — The Exhibition — STOPAZ</title>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#0a0a0a"/>
+<meta name="description" content="The Antizionism room of The Exhibition."/>
+<title>Antizionism — The Exhibition — STOPAZ</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="STOPAZ"/>
-<meta property="og:title" content="Antizionism — The Exhibition — STOPAZ"/>
-<meta property="og:description" content="The Antizionism room of The Exhibition."/>
-<meta property="og:image" content="campus_encampment.webp"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Antizionism — The Exhibition — STOPAZ"/>
-<meta name="twitter:description" content="The Antizionism room of The Exhibition."/>
-<link href="styles.css" rel="stylesheet"/></head>
-<body class="room-page room-v4 room-v5 room-v6 room-v7 room-v8 room-v10" data-music-on-interaction="true" data-page="antizionism.html">
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="room-page room-page-refined" data-page="antizionism.html" data-music-on-interaction="true">
 <a class="skip-link" href="#room-main">Skip to content</a>
 <div class="room-stage">
-<div class="room-topbar"><a aria-label="Back to The Exhibition" class="room-back" href="exhibition.html"><span aria-hidden="true">←</span><b>Exhibition</b></a><div aria-hidden="true" class="room-context"><span>The Exhibition</span><i>/</i><b>Antizionism</b></div><button aria-label="Play exhibition music" aria-pressed="false" class="music-control" type="button"><span>Music</span><span aria-hidden="true" class="music-bars"><i></i><i></i><i></i></span></button></div>
-<main class="room-main" id="room-main" tabindex="-1"><h1 class="sr-only">Antizionism Exhibition Room</h1><section aria-label="Antizionism room" class="room-bays">
-<button aria-label="Open Soviet gallery, 4 images" class="room-bay" data-images="soviet_horses.webp,soviet_boot.webp,soviet_constitution.webp,protocols.webp" data-label="Soviet" type="button"><img class="site-image pending-image" alt="" decoding="async" fetchpriority="high" height="325" src="soviet_horses.webp" width="437"/><span>Soviet</span></button>
-<button aria-label="Open Arab gallery, 4 images" class="room-bay" data-images="arab_red_hands.webp,hamas_monument.webp,devil_mural.webp,red_paint_door.webp" data-label="Arab" type="button"><img class="site-image pending-image" alt="" decoding="async" fetchpriority="high" height="691" src="arab_red_hands.webp" width="444"/><span>Arab</span></button>
-<button aria-label="Open Western gallery, 6 images" class="room-bay" data-images="campus_encampment.webp,gays_for_gaza.webp,sweden_protest.webp,subway_graffiti.webp,river_to_sea_mural.webp,western_rope.webp" data-label="Western" type="button"><img class="site-image pending-image" alt="" decoding="async" fetchpriority="high" height="432" src="campus_encampment.webp" width="960"/><span>Western</span></button>
-</section></main>
+  <div class="room-topbar">
+    <a class="room-back" href="exhibition.html" aria-label="Back to The Exhibition"><span aria-hidden="true">←</span><b>The Exhibition</b></a>
+    <div class="room-context"><span>Room III</span><i>/</i><b>Antizionism</b></div>
+    <button class="music-control" type="button" aria-pressed="false" aria-label="Play exhibition music"><span>Music</span><span aria-hidden="true" class="music-bars"><i></i><i></i><i></i></span></button>
+  </div>
+  <main class="room-main" id="room-main" tabindex="-1">
+    <section class="room-intro reveal">
+      <p class="room-kicker">The Exhibition</p>
+      <h1>Antizionism</h1>
+      <p class="room-lead">This room traces antizionism across Soviet, Arab, and Western contexts. Select an archive to view the image sequence.</p>
+    </section>
+    <section class="room-bays" aria-label="Antizionism image archives">
+      <button class="room-bay" type="button" data-label="Soviet" data-images="soviet_horses.webp,soviet_boot.webp,soviet_constitution.webp,soviet.webp,protocols.webp" aria-label="Open Soviet gallery, 5 images">
+        <img class="site-image pending-image" src="soviet_horses.webp" alt="Soviet propaganda archive" decoding="async" fetchpriority="high"/>
+        <span>Soviet</span>
+      </button>
+      <button class="room-bay" type="button" data-label="Arab" data-images="red_paint_door.webp,hamas_monument.webp,arab_red_hands.webp,devil_mural.webp" aria-label="Open Arab gallery, 4 images">
+        <img class="site-image pending-image" src="red_paint_door.webp" alt="Arab antizionist archive" decoding="async" fetchpriority="high"/>
+        <span>Arab</span>
+      </button>
+      <button class="room-bay" type="button" data-label="Western" data-images="campus_encampment.webp,gays_for_gaza.webp,sweden_protest.webp,subway_graffiti.webp,river_to_sea_mural.webp,western_rope.webp,western.webp" aria-label="Open Western gallery, 7 images">
+        <img class="site-image pending-image" src="campus_encampment.webp" alt="Western antizionist archive" decoding="async" fetchpriority="high"/>
+        <span>Western</span>
+      </button>
+    </section>
+    <section class="room-notes reveal" aria-label="Interpretive notes">
+      <article><h2>Soviet</h2><p>Propaganda, ideological framing, and disinformation supplied core antizionist language and imagery.</p></article>
+      <article><h2>Arab</h2><p>Regional political and religious anti-Zionist forms extended older anti-Jewish motifs into a modern political register.</p></article>
+      <article><h2>Western</h2><p>In universities, media, and protest culture, antizionism is recast through decolonization, race, and human-rights rhetoric.</p></article>
+    </section>
+  </main>
 </div>
-<div aria-hidden="true" aria-labelledby="room-detail-caption" aria-modal="true" class="room-detail" hidden="" role="dialog" tabindex="-1">
-<button aria-label="Close gallery" class="detail-close" type="button"><span aria-hidden="true">×</span><b>Close</b></button>
-<button aria-label="Previous image" class="detail-nav detail-prev" type="button"><span aria-hidden="true">←</span><b>Previous</b></button>
-<figure aria-atomic="true" aria-live="polite"><img class="site-image pending-image" alt="" aria-label="Next image" role="button" tabindex="0"/><div class="detail-meta"><figcaption id="room-detail-caption"></figcaption><small class="detail-source">Image supplied by STOPAZ.</small><span aria-live="polite" class="detail-count"></span></div></figure>
-<button aria-label="Next image" class="detail-nav detail-next" type="button"><b>Next</b><span aria-hidden="true">→</span></button>
+<div class="room-detail" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="room-detail-caption" tabindex="-1">
+  <button class="detail-close" type="button" aria-label="Close gallery"><span aria-hidden="true">×</span><b>Close</b></button>
+  <button class="detail-nav detail-prev" type="button" aria-label="Previous image"><span aria-hidden="true">←</span><b>Previous</b></button>
+  <figure aria-live="polite" aria-atomic="true"><img class="site-image pending-image" alt="" role="button" tabindex="0" aria-label="Next image"/><div class="detail-meta"><figcaption id="room-detail-caption"></figcaption><small class="detail-source">Image supplied by STOPAZ.</small><span class="detail-count" aria-live="polite"></span></div></figure>
+  <button class="detail-nav detail-next" type="button" aria-label="Next image"><b>Next</b><span aria-hidden="true">→</span></button>
 </div>
-<audio id="room-audio" loop="" preload="auto" src="nocturne.mp3"></audio><script src="script.js"></script></body></html>
+<audio id="room-audio" src="nocturne.mp3" loop preload="auto" autoplay></audio>
+<script src="script.js"></script>
+</body>
+</html>
