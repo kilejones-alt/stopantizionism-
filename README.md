@@ -1,14 +1,16 @@
-# STOPAZ Website
+# STOPAZ static website
 
-Static GitHub Pages repository. Upload every file in this ZIP directly to the repository root.
+Professional static website for GitHub Pages.
 
-## Included
+## Primary pages
+- `index.html` — homepage
+- `education.html` — education overview
+- `educationtraining.html` — institutional programs
+- `certificate-program.html` — certificate tracks and enrollment
+- `team.html` — leadership
+- `partners.html` — partnership process
+- `support.html` — funding priorities
+- `donate-1.html` — official donation route
+- `exhibition.html` and `antizionism.html` — museum experience
 
-- 25 HTML pages
-- Shared responsive stylesheet and JavaScript
-- Full image and audio assets
-- Museum-style Exhibition and Antizionism archive room
-- Cinematic Exhibition entrance transition
-- Persistent Exhibition music control with immediate and first-interaction playback attempts
-
-Browsers may block audible autoplay until a visitor interacts with the page. The site retries playback on the first permitted interaction.
+All files remain at the repository root for GitHub Pages. Browser autoplay may be blocked until the visitor interacts.

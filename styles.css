@@ -279,9 +279,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* Cinematic Exhibition transition */
 .exhibition-camera-overlay{position:fixed;inset:0;z-index:20000;overflow:hidden;background:#050505;opacity:0;pointer-events:none;transition:opacity .16s ease;perspective:1200px}
 .exhibition-camera-overlay.active{opacity:1;pointer-events:auto}
-.exhibition-camera-overlay img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none;opacity:1;transform:scale(1.02) translate3d(0,0,0);transform-origin:center;transition:transform 1.15s cubic-bezier(.18,.78,.18,1),filter 1.15s ease}
+.exhibition-camera-media{width:100%;height:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));transform:scale(1.02) translate3d(0,0,0);transform-origin:center;transition:transform 1.15s cubic-bezier(.18,.78,.18,1),filter 1.15s ease}
+.exhibition-camera-media img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none;opacity:1}
 .exhibition-camera-overlay::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 28%,rgba(0,0,0,.44) 100%);opacity:0;transition:opacity 1s ease}
-.exhibition-camera-overlay.active img{transform:scale(1.34) translate3d(0,-1.5%,0);filter:brightness(.72)}
+.exhibition-camera-overlay.active .exhibition-camera-media{transform:scale(1.34) translate3d(0,-1.5%,0);filter:brightness(.72)}
 .exhibition-camera-overlay.active::after{opacity:1}
 body.exhibition-transitioning{overflow:hidden!important}
 body.exhibition-transitioning .site-header,body.exhibition-transitioning main,body.exhibition-transitioning .site-footer{opacity:0;transition:opacity .36s ease}
@@ -314,7 +315,7 @@ body.exhibition-transitioning .site-header,body.exhibition-transitioning main,bo
   .room-main{padding-left:16px;padding-right:16px}.room-intro h1{font-size:clamp(58px,17vw,88px)}.room-bay{height:400px}.room-modal{grid-template-columns:1fr;padding:16px}.modal-prev,.modal-next{position:fixed;bottom:16px;z-index:3}.modal-prev{left:16px}.modal-next{right:16px}.room-modal figcaption{bottom:66px}.room-modal figure span{bottom:18px;right:50%;transform:translateX(50%)}
 }
 @media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}body{transition:none}.button,.text-link,.work-grid a,.card-grid article,.profile-grid article,.contact-options article,.resource-grid a,.social-card,.course,.program-feature,.track-grid article,.event-feature,.museum-doors a,.museum-doors img,.era-gallery article,.era-gallery article>img,.room-bay,.room-bay img,.exhibition-camera-overlay,.exhibition-camera-overlay img,.museum-entry{transition:none!important}.button:hover,.text-link:hover,.work-grid a:hover,.card-grid article:hover,.profile-grid article:hover,.contact-options article:hover,.resource-grid a:hover,.social-card:hover,.course:hover,.program-feature:hover,.track-grid article:hover,.event-feature:hover,.museum-doors a:hover,.era-gallery article:hover,.room-bay:hover{transform:none!important}.exhibition-camera-overlay img,.museum-page.camera-arrival .museum-entry{transform:none!important;filter:none!important}
+  html{scroll-behavior:auto}body{transition:none}.button,.text-link,.work-grid a,.card-grid article,.profile-grid article,.contact-options article,.resource-grid a,.social-card,.course,.program-feature,.track-grid article,.event-feature,.museum-doors a,.museum-doors img,.era-gallery article,.era-gallery article>img,.room-bay,.room-bay img,.exhibition-camera-overlay,.exhibition-camera-media,.exhibition-camera-overlay img,.museum-entry{transition:none!important}.button:hover,.text-link:hover,.work-grid a:hover,.card-grid article:hover,.profile-grid article:hover,.contact-options article:hover,.resource-grid a:hover,.social-card:hover,.course:hover,.program-feature:hover,.track-grid article:hover,.event-feature:hover,.museum-doors a:hover,.era-gallery article:hover,.room-bay:hover{transform:none!important}.exhibition-camera-media,.exhibition-camera-overlay img,.museum-page.camera-arrival .museum-entry{transform:none!important;filter:none!important}
 }
 
 /* Final Exhibition clarity pass: preserve full image brightness and localize text contrast. */
@@ -350,4 +351,104 @@ body.exhibition-transitioning .site-header,body.exhibition-transitioning main,bo
 }
 @media(prefers-reduced-motion:reduce){
   .museum-doors span,.era-gallery article>div,.room-bay span{backdrop-filter:none}
+}
+
+/* Professional consolidation pass */
+.fact-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line-light);border-top:0}
+.fact-list span{padding:22px 26px;border-right:1px solid var(--line-light);font-weight:800;letter-spacing:.02em}
+.fact-list span:last-child{border-right:0}
+.trust-section{background:var(--paper-bright)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:28px}
+.trust-grid article{min-height:290px;padding:34px;background:#fff;border:1px solid var(--line);transition:transform .28s var(--ease),box-shadow .28s ease,border-color .28s ease}
+.trust-grid article:hover{transform:translateY(-5px);border-color:rgba(117,23,38,.34);box-shadow:var(--shadow-hover)}
+.trust-grid h3{margin:0 0 16px;font-size:clamp(31px,3vw,44px);line-height:1.02}
+.trust-grid p:last-child{color:#52575c}
+.closing-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:42px;background:var(--paper-bright)}
+.closing-cta h2{margin-bottom:0}
+.path-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.path-grid a{min-height:340px;padding:clamp(32px,4vw,50px);display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);transition:transform .28s var(--ease),box-shadow .28s ease,border-color .28s ease}
+.path-grid a:hover,.path-grid a:focus-visible{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:rgba(117,23,38,.38)}
+.path-grid h3{margin:18px 0;font-size:clamp(36px,4vw,56px);line-height:.98}
+.path-grid p{color:#52575c;font-size:18px}
+.path-grid b{margin-top:auto}
+.path-type{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.detail-grid article{padding:clamp(32px,4vw,48px);background:#fff;border:1px solid var(--line)}
+.detail-grid h3{margin:0 0 22px;font-size:clamp(34px,3.5vw,50px)}
+.detail-grid ul{margin:0;padding-left:20px}
+.detail-grid li{padding:8px 0;color:#4f555a}
+.institutional-actions{margin-top:40px}
+.enrollment-status{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:44px;background:var(--paper-bright)}
+.enrollment-status h2{font-size:clamp(40px,4.8vw,68px)}
+.enrollment-status p{font-size:18px;color:#4d5358}
+.course-facts{display:grid;gap:10px;margin-top:auto;padding-top:24px;border-top:1px solid var(--line)}
+.course-facts span{display:block;color:#52575c;font-size:14px;line-height:1.45}
+.course-facts b{display:block;color:var(--ink);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.leadership-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.leadership-list article{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:clamp(36px,6vw,84px);padding:50px 0;border-bottom:1px solid var(--line)}
+.leadership-list h2{margin:0;font-size:clamp(42px,5vw,70px)}
+.leadership-list article>div p{font-size:18px;color:#4e5459}
+.partner-process,.support-decision{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.65fr);align-items:end;gap:50px}
+.partner-process h2,.support-decision h2{margin-bottom:20px}
+.donate-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.8fr);gap:clamp(44px,7vw,96px);align-items:start}
+.donate-layout>div:first-child p{font-size:18px;color:#4d5358}
+.donate-facts{display:grid;border-top:1px solid var(--line)}
+.donate-facts h3{margin:0;padding:0 0 20px;font-size:34px}
+.donate-facts span{padding:16px 0;border-bottom:1px solid var(--line);font-weight:700}
+.contact-form-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(420px,1.2fr);gap:clamp(44px,7vw,96px);align-items:start}
+.contact-direct{display:grid;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.contact-direct span{font-size:14px;color:#555b60}
+.contact-direct a{font-weight:800;border-bottom:1px solid}
+.inquiry-form{display:grid;gap:20px;padding:clamp(28px,4vw,44px);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.inquiry-form label{display:grid;gap:8px;font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.inquiry-form input,.inquiry-form select,.inquiry-form textarea{width:100%;padding:13px 14px;border:1px solid rgba(17,19,23,.32);background:#fff;color:var(--ink);font-size:16px;letter-spacing:0;text-transform:none}
+.inquiry-form textarea{resize:vertical;min-height:150px}
+.form-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form-note{margin:0;color:var(--muted);font-size:13px}
+.resource-list{display:grid;border-top:1px solid var(--line)}
+.resource-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .22s ease,opacity .22s ease}
+.resource-list a:hover,.resource-list a:focus-visible{padding-left:12px;opacity:.72}
+.resource-list h3{margin:0;font-size:clamp(27px,3vw,42px);line-height:1.08}
+.resource-list span{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:right}
+
+/* Museum: clearer hierarchy and restrained controls. */
+.museum-collage{display:none!important}
+.museum-entry{padding:32px;background:linear-gradient(180deg,#d9cbb8,#c9b79e)}
+.museum-paper{min-height:0;padding-top:70px;padding-bottom:58px}
+.museum-title{margin-top:24px;margin-bottom:58px}
+.museum-title-media img{filter:none!important;opacity:1!important}
+.museum-title::after{display:none!important}
+.museum-entry>.music-control{left:auto;right:22px;top:22px;bottom:auto}
+.exhibition-camera-overlay.active .exhibition-camera-media{filter:brightness(.88);transform:scale(1.30) translate3d(0,-1%,0)}
+.exhibition-camera-overlay::after{background:radial-gradient(circle at center,transparent 38%,rgba(0,0,0,.24) 100%)}
+
+/* Museum records */
+.room-modal figure{grid-template-rows:minmax(0,1fr) auto;gap:16px;align-items:stretch;width:min(84vw,1320px)}
+.room-modal figure img{justify-self:center}
+.modal-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.75fr);gap:24px;padding:18px 20px;background:#111317;border:1px solid rgba(255,255,255,.2)}
+.room-modal figcaption{position:static;padding:0;background:none;font-size:clamp(26px,2.8vw,44px)}
+.modal-record,.modal-source{margin:0;color:#c8cdd1}
+.modal-record{font-size:14px;line-height:1.55}
+.modal-source{grid-column:1/-1;padding-top:12px;border-top:1px solid rgba(255,255,255,.14);font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.room-modal .modal-count{bottom:auto;top:16px}
+
+@media(max-width:1000px){
+  .trust-grid{grid-template-columns:1fr}
+  .trust-grid article{min-height:0}
+  .closing-cta,.enrollment-status,.partner-process,.support-decision,.donate-layout,.contact-form-layout{grid-template-columns:1fr}
+  .path-grid,.detail-grid{grid-template-columns:1fr}
+  .leadership-list article{grid-template-columns:1fr;gap:20px}
+  .modal-copy{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .fact-list{grid-template-columns:1fr}
+  .fact-list span{border-right:0;border-bottom:1px solid var(--line-light)}
+  .fact-list span:last-child{border-bottom:0}
+  .form-pair{grid-template-columns:1fr}
+  .resource-list a{grid-template-columns:1fr;gap:8px}
+  .resource-list span{text-align:left}
+  .museum-entry>.music-control{right:14px;top:14px;bottom:auto;padding:8px 12px;min-height:36px}
+  .museum-title{margin-bottom:34px}
+  .room-modal figure{width:100%}
+  .modal-copy{padding:14px}
 }
