@@ -83,3 +83,336 @@
 .vision-hero:before{background-image:url('soviet_horses.webp')}
 .support-hero:before{background-image:url('western.webp')}
 @media(max-width:900px){.social-grid{grid-template-columns:1fr}}
+
+/* Professional interaction polish */
+:root{
+  --lift-distance:8px;
+  --lift-shadow:0 24px 56px rgba(17,19,23,.14);
+  --lift-shadow-dark:0 26px 60px rgba(0,0,0,.34);
+  --lift-ease:cubic-bezier(.2,.7,.2,1);
+}
+
+.work-grid a,
+.card-grid article,
+.track-grid article,
+.course,
+.resource-grid a,
+.profile-grid article,
+.contact-options article,
+.social-card,
+.event-feature,
+.program-feature,
+.museum-doors a,
+.room-bay,
+.era-gallery article{
+  transition:transform .28s var(--lift-ease),box-shadow .28s var(--lift-ease),border-color .28s ease,background-color .28s ease;
+  will-change:transform;
+}
+
+.work-grid a:hover,
+.work-grid a:focus-visible,
+.card-grid article:hover,
+.card-grid article:focus-within,
+.track-grid article:hover,
+.track-grid article:focus-within,
+.course:hover,
+.course:focus-within,
+.resource-grid a:hover,
+.resource-grid a:focus-visible,
+.profile-grid article:hover,
+.profile-grid article:focus-within,
+.contact-options article:hover,
+.contact-options article:focus-within,
+.social-card:hover,
+.social-card:focus-visible,
+.event-feature:hover,
+.event-feature:focus-within,
+.program-feature:hover,
+.program-feature:focus-within{
+  transform:translateY(calc(-1 * var(--lift-distance)));
+  box-shadow:var(--lift-shadow);
+  border-color:rgba(120,23,37,.42);
+  position:relative;
+  z-index:2;
+}
+
+.dark-section .card-grid article:hover,
+.dark-section .card-grid article:focus-within,
+.track-grid article:hover,
+.track-grid article:focus-within,
+.program-feature:hover,
+.program-feature:focus-within{
+  box-shadow:var(--lift-shadow-dark);
+  border-color:rgba(255,255,255,.34);
+}
+
+.museum-doors a:hover,
+.museum-doors a:focus-visible,
+.room-bay:hover,
+.room-bay:focus-visible,
+.era-gallery article:hover,
+.era-gallery article:focus-within{
+  transform:translateY(-8px);
+  box-shadow:var(--lift-shadow-dark);
+  z-index:3;
+}
+
+.museum-doors a:hover img,
+.museum-doors a:focus-visible img,
+.room-bay:hover img,
+.room-bay:focus-visible img,
+.era-gallery article:hover img,
+.era-gallery article:focus-within img{
+  transform:scale(1.025)!important;
+}
+
+.museum-doors img,
+.room-bay img,
+.era-gallery img{
+  transition:transform .45s var(--lift-ease),filter .35s ease,opacity .35s ease;
+}
+
+/* Preserve exhibition imagery and the clear title image */
+.museum-title img{
+  filter:none!important;
+  opacity:1!important;
+  transform:none!important;
+}
+.museum-title:after{display:none!important;content:none!important}
+.museum-doors img{opacity:.66}
+.room-bay img{filter:grayscale(.18) brightness(.72)}
+.era-gallery img{filter:grayscale(.28) brightness(.56)}
+
+/* Refined buttons, links, and spacing */
+.button{transition:transform .22s ease,background-color .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease}
+.button:hover,.button:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,19,23,.16)}
+.text-link{transition:opacity .2s ease,padding-bottom .2s ease}
+.text-link:hover,.text-link:focus-visible{opacity:.72;padding-bottom:6px}
+.site-header{box-shadow:0 1px 0 rgba(255,255,255,.04)}
+.section-head{max-width:1040px}
+.large-copy p,.section-summary,.page-hero p:last-child{max-width:820px}
+.work-grid a,.card-grid article,.resource-grid a,.profile-grid article,.contact-options article,.social-card{background-clip:padding-box}
+
+@media (prefers-reduced-motion:reduce){
+  .work-grid a,.card-grid article,.track-grid article,.course,.resource-grid a,.profile-grid article,.contact-options article,.social-card,.event-feature,.program-feature,.museum-doors a,.room-bay,.era-gallery article,.museum-doors img,.room-bay img,.era-gallery img,.button,.text-link{transition:none!important}
+  .work-grid a:hover,.card-grid article:hover,.track-grid article:hover,.course:hover,.resource-grid a:hover,.profile-grid article:hover,.contact-options article:hover,.social-card:hover,.event-feature:hover,.program-feature:hover,.museum-doors a:hover,.room-bay:hover,.era-gallery article:hover{transform:none!important}
+}
+
+/* Professional consistency pass */
+:root{
+  --red:#741622;
+  --red-bright:#a52c3d;
+  --surface:#ffffff;
+  --surface-soft:#ebe8e1;
+  --focus:#d7a64a;
+}
+body{font-family:var(--sans);font-size:16px}
+h1,h2,h3,.museum-title h1,.museum-doors span,.era-gallery h2,.room-intro h1,.room-bay span{font-family:var(--serif)}
+.site-header{background:rgba(17,19,23,.985);backdrop-filter:blur(8px)}
+.wordmark span{color:#d6d8dc}
+.nav-links a:hover,.nav-links a[aria-current="page"]{border-color:#d6d8dc}
+.nav-exhibition{color:#f1f1ef}
+
+/* Reserve red for compact actions and accents */
+.button.primary{background:var(--red);border-color:var(--red)}
+.button.primary:hover,.button.primary:focus-visible{background:#5c101a;border-color:#5c101a}
+.eyebrow.dark,.course .code{color:var(--red)}
+.declaration-hero,.declaration-band,.red-section,.cta-red{background:var(--ink)!important}
+.declaration-hero:after,.declaration-band:after,.red-section:after,.cta-red:after{display:none!important}
+.declaration-hero .button,.declaration-band .button{background:var(--red);border-color:var(--red)}
+
+/* Unified hierarchy and restrained scale */
+.page-hero{min-height:52svh;padding-top:clamp(105px,11vw,150px);padding-bottom:clamp(58px,7vw,92px)}
+.page-hero h1{font-size:clamp(54px,7vw,92px);line-height:.9;max-width:1050px}
+.page-hero p:last-child{font-size:clamp(18px,1.7vw,23px);line-height:1.5}
+.section,.dark-section{padding-top:clamp(72px,7vw,108px);padding-bottom:clamp(72px,7vw,108px)}
+.section-head h2,.intro-grid h2,.audience h2{font-size:clamp(42px,5.4vw,76px);line-height:.96}
+.section-head{margin-bottom:clamp(38px,5vw,66px)}
+.large-copy{font-size:19px;line-height:1.68}
+.card-grid,.work-grid,.resource-grid,.profile-grid,.contact-options,.social-grid{gap:18px}
+.card-grid article,.work-grid a,.resource-grid a,.profile-grid article,.contact-options article,.social-card{padding:clamp(26px,3vw,38px)}
+
+/* Consistent main-site image treatment */
+body:not(.museum-page):not(.room-page) main img{filter:grayscale(.18) saturate(.78) contrast(1.04);object-position:center}
+body:not(.museum-page):not(.room-page) .hero-image>img{filter:grayscale(.18) saturate(.78) brightness(.86) contrast(1.04)}
+body:not(.museum-page):not(.room-page) .program-feature img,
+body:not(.museum-page):not(.room-page) .event-feature img,
+body:not(.museum-page):not(.room-page) .image-feature img{aspect-ratio:4/3;object-fit:cover}
+
+/* Exhibition remains clear, archival, and visually separate */
+.museum-page img,.room-page img{image-rendering:auto}
+.museum-title img{filter:none!important;opacity:1!important}
+.museum-doors img{filter:none!important;opacity:.76!important}
+.room-bay img{filter:grayscale(.08) brightness(.82) saturate(.9)!important}
+.era-gallery img{filter:grayscale(.12) brightness(.66) saturate(.86)!important}
+
+/* Global interaction system */
+a,button{outline-offset:4px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+.nav-links a,.footer-grid a,.footer-bottom a{transition:color .2s ease,opacity .2s ease,border-color .2s ease}
+.footer-grid a:hover,.footer-grid a:focus-visible,.footer-bottom a:hover,.footer-bottom a:focus-visible{color:#fff;opacity:.72}
+.hero-image img,.program-feature img,.event-feature img,.image-feature img{transition:transform .55s var(--lift-ease)}
+.program-feature:hover img,.event-feature:hover img,.image-feature:hover img{transform:scale(1.018)}
+
+/* Page transition */
+body{opacity:1;transition:opacity .16s ease}
+body.page-leaving{opacity:.01}
+@media(prefers-reduced-motion:reduce){body{transition:none}.hero-image img,.program-feature img,.event-feature img,.image-feature img{transition:none!important}}
+
+/* Footer and governance */
+.footer-grid{grid-template-columns:1.55fr repeat(4,1fr);gap:clamp(26px,4vw,58px)}
+.footer-grid>div:first-child p{max-width:420px;color:#b8bcc0}
+.footer-grid h2{color:#cfd2d5}
+
+/* Legal and informational pages */
+.legal-hero:before{background-image:url('soviet_constitution.webp')}
+.legal-copy{max-width:900px;margin:auto}
+.legal-copy h2{font-size:clamp(30px,4vw,48px);margin:52px 0 14px}
+.legal-copy h2:first-child{margin-top:0}
+.legal-copy p{font-size:18px;line-height:1.72;color:#454a4e}
+
+/* Mobile refinement */
+@media(max-width:1050px){
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:760px){
+  .site-nav{height:68px;padding:0 18px}
+  .nav-links{top:68px;padding:28px 20px 42px}
+  .home-hero{min-height:auto}
+  .hero-copy{padding-top:74px;padding-bottom:70px}
+  .hero-copy h1{font-size:clamp(52px,16vw,80px)}
+  .page-hero{min-height:44svh;padding-top:102px;padding-bottom:54px}
+  .page-hero h1{font-size:clamp(48px,14vw,72px)}
+  .section,.dark-section{padding-left:20px;padding-right:20px}
+  .card-grid,.work-grid,.resource-grid,.profile-grid,.contact-options,.social-grid,.track-grid{grid-template-columns:1fr!important}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid>div:first-child{grid-column:auto}
+  .footer-bottom{gap:14px;align-items:flex-start;flex-direction:column}
+  .course{min-height:auto}
+}
+
+
+/* Cinematic camera transition into The Exhibition */
+.exhibition-camera-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  overflow:hidden;
+  background:#050505;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease;
+  perspective:1200px;
+}
+.exhibition-camera-overlay.active{opacity:1;pointer-events:auto}
+.exhibition-camera-overlay img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:none!important;
+  opacity:1!important;
+  transform:scale(1.02) translate3d(0,0,0);
+  transform-origin:center center;
+  will-change:transform,filter;
+  transition:transform 1.18s cubic-bezier(.18,.78,.18,1),filter 1.18s ease;
+}
+.exhibition-camera-overlay:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,transparent 30%,rgba(0,0,0,.42) 100%);
+  opacity:0;
+  transition:opacity 1.05s ease;
+}
+.exhibition-camera-overlay.active img{transform:scale(1.34) translate3d(0,-1.5%,0);filter:brightness(.7)!important}
+.exhibition-camera-overlay.active:after{opacity:1}
+body.exhibition-transitioning{overflow:hidden!important}
+body.exhibition-transitioning .site-header,
+body.exhibition-transitioning main,
+body.exhibition-transitioning .site-footer{opacity:0;transition:opacity .38s ease}
+
+/* Matching arrival movement on the Exhibition page */
+.museum-page.camera-arrival{opacity:1!important}
+.museum-page.camera-arrival .museum-entry{
+  transform:scale(1.09);
+  filter:brightness(.68);
+  opacity:.2;
+}
+.museum-page.camera-arrival.camera-arrival-ready .museum-entry{
+  transform:scale(1);
+  filter:brightness(1);
+  opacity:1;
+  transition:transform 1.05s cubic-bezier(.18,.78,.18,1),filter .9s ease,opacity .55s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  .exhibition-camera-overlay img,
+  .exhibition-camera-overlay:after,
+  .museum-page.camera-arrival .museum-entry{transition:none!important;transform:none!important;filter:none!important}
+}
+
+/* FINAL USER-PREFERENCE CONSISTENCY PASS */
+/* No decorative rules may cross or sit behind major titles. */
+.hero-copy::before,.hero-copy::after,.hero-copy h1::before,.hero-copy h1::after,
+.page-hero::after,.page-hero>div::before,.page-hero>div::after,.page-hero h1::before,.page-hero h1::after,
+.declaration-hero::before,.declaration-hero::after,.declaration-hero h1::before,.declaration-hero h1::after,
+.museum-title h1::before,.museum-title h1::after,.room-intro h1::before,.room-intro h1::after{
+  content:none!important;display:none!important;border:0!important;background:none!important;box-shadow:none!important;
+}
+.hero-copy h1,.page-hero h1,.declaration-hero h1,.museum-title h1,.room-intro h1{position:relative;isolation:isolate}
+
+/* Keep one restrained type system: sans for interface/body and serif for display only. */
+body,button,input,textarea,select,.nav-links,.eyebrow,.button,.text-link,.footer-grid,.footer-bottom,.course-type,.museum-back,.music-control{font-family:var(--sans)!important}
+h1,h2,h3,.museum-title h1,.museum-doors span,.era-gallery h2,.room-intro h1,.room-bay span{font-family:var(--serif)!important}
+
+/* Professional scale: secondary pages remain subordinate to the homepage. */
+.page-hero h1{font-size:clamp(50px,6.4vw,86px)!important;line-height:.92!important}
+.declaration-hero h1{font-size:clamp(58px,8.2vw,116px)!important}
+.section h2,.dark-section h2{font-size:clamp(40px,5vw,70px)}
+
+/* Restrained, consistent hover motion. */
+.work-grid a,.card-grid article,.track-grid article,.course,.resource-grid a,.profile-grid article,
+.contact-options article,.social-card,.event-feature,.program-feature,.museum-doors a,.room-bay,.era-gallery article{
+  transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,border-color .28s ease,background-color .28s ease;
+}
+.work-grid a:hover,.work-grid a:focus-within,.card-grid article:hover,.card-grid article:focus-within,
+.track-grid article:hover,.track-grid article:focus-within,.course:hover,.course:focus-within,
+.resource-grid a:hover,.resource-grid a:focus-visible,.profile-grid article:hover,.profile-grid article:focus-within,
+.contact-options article:hover,.contact-options article:focus-within,.social-card:hover,.social-card:focus-within,
+.event-feature:hover,.program-feature:hover,.museum-doors a:hover,.museum-doors a:focus-visible,
+.room-bay:hover,.room-bay:focus-visible,.era-gallery article:hover,.era-gallery article:focus-within{
+  transform:translateY(-5px);box-shadow:0 18px 38px rgba(17,19,23,.13);
+}
+.button,.text-link{transition:transform .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+.button:hover,.button:focus-visible,.text-link:hover,.text-link:focus-visible{transform:translateY(-2px)}
+
+/* Clear, undimmed museum entrance imagery. */
+.museum-title{background:#ddd5ca}
+.museum-title img{filter:none!important;opacity:1!important;transform:none!important;image-rendering:auto!important}
+.museum-title::after{content:none!important;display:none!important}
+.museum-doors img{filter:none!important;opacity:.88!important;transform:scale(1.001)}
+.museum-doors a::after{content:"";position:absolute;inset:0;background:rgba(239,232,221,.08);pointer-events:none}
+.museum-doors a:hover img,.museum-doors a:focus-visible img{transform:scale(1.025)}
+.museum-collage{filter:none!important;opacity:.22}
+.room-bay img{filter:grayscale(.04) brightness(.9) saturate(.94)!important}
+.era-gallery img{filter:grayscale(.06) brightness(.72) saturate(.9)!important}
+
+/* No large red fields; reserve red for compact action and emphasis. */
+.declaration-hero,.declaration-band,.red-section,.cta-red{background:var(--ink)!important}
+
+/* Less empty space and more consistent content density. */
+.section,.dark-section{padding-top:clamp(68px,6.5vw,102px);padding-bottom:clamp(68px,6.5vw,102px)}
+.work-grid a,.card-grid article,.resource-grid a,.profile-grid article,.contact-options article{min-height:250px}
+.course{min-height:560px}
+
+/* Mobile: prevent clipping and oversized blocks. */
+@media(max-width:760px){
+  .hero-copy h1{font-size:clamp(50px,15vw,72px)!important;line-height:.92!important}
+  .page-hero h1{font-size:clamp(44px,13vw,64px)!important}
+  .declaration-hero h1{font-size:clamp(50px,14vw,72px)!important}
+  .museum-title{height:150px}
+  .museum-title h1{font-size:clamp(46px,13vw,62px)!important}
+  .room-bay{height:430px}
+  .work-grid a,.card-grid article,.resource-grid a,.profile-grid article,.contact-options article,.course{min-height:auto}
+}
